@@ -1,0 +1,10 @@
+<h1 class="title">
+	<%= @indicator.name %>
+</h1>
+
+<h1 class="title">
+	<%= @indicator.data %>
+</h1>
+
+	<%= link_to 'Edit', edit_indicator_path(@indicator) %>
+	<%= link_to 'Delete', indicator_path(@indicator), method: :delete, data: {confirm: 'Are you sure?'} %>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intranet</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+	 <section id="container">
+		<header id="header"  style="background-color:rgba(255,255,255,0.9);">
+		            <!--logo start-->
+		            <div class="brand">
+		                <a href="index.php" class="logo">Flexitech</a>
+		            </div>
+		            <!--logo end-->
+		            <div class="toggle-navigation toggle-left">
+		                <button type="button" class="btn btn-default" id="toggle-left" data-toggle="tooltip" data-placement="right" title="Toggle Navigation">
+		                    <i class="fa fa-bars"></i>
+		                </button>
+		            </div>
+		            <div class="user-nav">
+
+		           			 <%= link_to new_indicator_path, :class => "button" do %><i class="fa fa-bar-chart"></i> Nouvel Indicateur<% end %>
+		               
+		            </div>
+		        </header>
+		        <!--sidebar start-->
+		        <aside class="sidebar">
+		            <div id="leftside-navigation" class="nano">
+
+		    			<ul class="nano-content">
+		       				<li class="<%= 'active' if current_page?(root_path) %>">
+		       					<%= link_to root_path, data: { turbolinks: false } do %><i class="fa fa-bar-chart"></i> indicateurs<% end %>
+		                    </li>
+							<li>
+		                      <%= link_to indicators_path do %><i class="fa fa-book"></i> documentation<% end %>
+		                    </li>
+		                    </li>
+		    			</ul>
+					</div>
+
+		        </aside>
+		         <!--sidebar end-->
+		         <!--main content start-->	
+		<!-- end: header -->
+
+		<%= yield %>
+           
+    </section>
+     <!--Global JS-->
+</body>
+</html>

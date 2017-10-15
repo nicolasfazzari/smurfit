@@ -1,0 +1,38 @@
+<%= form_for @indicator do |f| %>
+	<% if @indicator.errors.any? %>
+		<div id="errors">
+			<h2><%= pluralize(@indicator.errors.count, "error") %> prevented this indicator from saving</h2>
+			<ul> 
+				<% @indicator.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<p>
+		<%= f.label :graph %><br>
+		<%= f.select(:graph, ['column','bar','pie','line','area'], {}, { :class => 'form-control' }) %>
+	</p>
+	<p>
+		<%= f.label :name %><br>
+		<%= f.text_field :name,:placeholder => "Entrer un titre pour le graphiaue", :class=>"form-control" %>
+	</p>
+	<p>
+		<%= f.label :xaxis %><br>
+		<%= f.text_area :xaxis, :placeholder => "Entrer le titre de l'axe X ", :class=>"form-control", :style=>"min-height: 100px;" %>
+	</p>
+	<p>
+		<%= f.label :yaxis %><br>
+		<%= f.text_area :yaxis, :placeholder => "Entrer le titre de l'axe Y", :class=>"form-control", :style=>"min-height: 100px;" %>
+	</p>
+	<p>
+		<%= f.label :data %><br>
+		<%= f.text_area :data, :placeholder => "Entrer les données", :class=>"form-control", :style=>"min-height: 100px;" %>
+	</p>
+	<%= link_to 'Retour', url_for(:back),data: { turbolinks: false }  %>
+	<div class="pull-right">
+		<%= f.submit %>
+	</div>
+<% end %>
+
+							                                	
