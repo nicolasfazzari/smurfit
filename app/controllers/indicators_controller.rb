@@ -20,9 +20,8 @@ class IndicatorsController < ApplicationController
 					  	end
 
 				
-					  	f.plotOptions(series: {dataLabels: {enabled: 'true'}})
-				
-
+					  f.plotOptions(series: {dataLabels: {enabled: 'true'}})
+					 
 					  f.title(text: indicator.name)
 					  f.xAxis(categories: x)
 
@@ -30,7 +29,7 @@ class IndicatorsController < ApplicationController
 					    {title: {text: indicator.yaxis, margin: 70} },
 					  ]
 
-					  f.legend(align: 'right', verticalAlign: 'top', y: 75, x: -50, layout: 'vertical')
+					  f.legend(align: 'center', verticalAlign: 'bottom', y: 0, x: 0, layout: 'horizontal')
 					  f.chart({defaultSeriesType: indicator.graph})
 			end
 			
