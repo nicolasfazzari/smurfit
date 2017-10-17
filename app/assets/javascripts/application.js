@@ -10,9 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require popper
 //= require jquery
 //= require jquery_ujs
+//= require jquery3
+//= require popper
+//= require bootstrap
+//= require bootstrap-sprockets
 //= require highcharts/highcharts
 //= require turbolinks
 //= require_tree .
@@ -265,3 +268,5 @@ $(document).ready(function() {
     app.init();
 
 });
+
+

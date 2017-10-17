@@ -65,7 +65,7 @@
 							                            <div class="panel-heading">
 							                                <h5 class="panel-title">HR</h5>
 							                                <div class="actions pull-right">
-							                                	<%= link_to 'Edit', edit_indicator_path(indicator), :class => "button" %>
+							                                	 <%= link_to edit_indicator_path(indicator), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "button"}  do %><i class="fa fa-edit"></i> Edit<% end %>
 							                                    <%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "button" %>
 							                                </div>
 							                            </div>
@@ -80,14 +80,14 @@
 						                        </div>
 						                    </div>
 						                <% else %>
-						                	<div class="row">
+						                	<div class="row" style='margin-bottom:20px'>
 							                    <div class="col-md-6">
 							                        <div class="panel panel-default">
 							                            <div class="panel-heading">
 							                                <h5 class="panel-title">HR</h5>
 							                                <div class="actions pull-right">
-							                                    <%= link_to 'Edit', edit_indicator_path(indicator), :class => "button" %>
-							                                    <%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "button"%>
+							                                     <%= link_to edit_indicator_path(indicator), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "button"}  do %><i class="fa fa-edit"></i> Edit<% end %>
+							                                     <%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "button" %>
 							                                </div>
 							                            </div>
 							                            <div class="panel-body">
@@ -101,9 +101,15 @@
 						                        </div>
 						                <% end %>
 									<% end %>
+									
             </section>
          </section>
          <!--main content end-->
-
+         <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			    	
+			    </div>
+			  </div>
+			</div>
 	
-
