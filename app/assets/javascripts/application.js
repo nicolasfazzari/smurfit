@@ -10,12 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery-1.10.2.min
 //= require jquery_ujs
-//= require jquery3
-//= require popper
-//= require bootstrap
-//= require bootstrap-sprockets
 //= require highcharts/highcharts
 //= require turbolinks
 //= require_tree .
@@ -24,48 +20,13 @@ var app = function() {
 
     var init = function() {
 
-        $(window).resize(function() {
-
-            function viewport() {
-                var e = window,
-                    a = 'inner';
-                if (!('innerWidth' in window)) {
-                    a = 'client';
-                    e = document.documentElement || document.body;
-                }
-                return {
-                    width: e[a + 'Width'],
-                    height: e[a + 'Height']
-                };
-            }
-
-            var value = viewport().width;
-
-            if (value < 767) {
-                $('.sidebar').addClass('sidebar-toggle');
-                $('.main-content-wrapper').addClass('main-content-toggle-left');
-            }
-
-        });
-
-
-        resize();
         tooltips();
         toggleMenuLeft();
         toggleMenuRight();
+        switcheryToggle();
         menu();
         togglePanel();
         closePanel();
-    };
-
-    //global functions
-    var resize = function() {
-        $(window).resize(function() {
-            $('#main-content, .nano').height($(window).height() - 80).css('padding-bottom', '100px');
-            $('#inbox-wrapper').height($(window).height() - 80).css('padding-bottom', '100px');
-        });
-
-        $(window).trigger('resize');
     };
 
     var tooltips = function() {
@@ -82,25 +43,22 @@ var app = function() {
 
     var toggleMenuLeft = function() {
         $('#toggle-left').bind('click', function(e) {
-            if (!$('.sidebarRight').hasClass('.sidebar-toggle-right')) {
-                $('.sidebarRight').removeClass('sidebar-toggle-right');
-                $('.main-content-wrapper').removeClass('main-content-toggle-right');
-            }
-            $('.sidebar').toggleClass('sidebar-toggle');
-            $('.main-content-wrapper').toggleClass('main-content-toggle-left');
-            e.stopPropagation();
+           $('body').removeClass('off-canvas-open')    
+            var bodyEl = $('#container');
+            ($(window).width() > 768) ? $(bodyEl).toggleClass('sidebar-mini'): $(bodyEl).toggleClass('sidebar-opened');
         });
     };
 
     var toggleMenuRight = function() {
-        $('#toggle-right').bind('click', function(e) {
-            if (!$('.sidebar').hasClass('.sidebar-toggle')) {
-                $('.sidebar').addClass('sidebar-toggle');
-                $('.main-content-wrapper').addClass('main-content-toggle-left');
-            }
-            $('.sidebarRight').toggleClass('sidebar-toggle-right');
-            $('.main-content-wrapper').toggleClass('main-content-toggle-right');
-            e.stopPropagation();
+         $('#toggle-right').click(function(){
+             $('.off-canvas').toggleClass('off-canvas-open');
+         });
+    };
+
+    var switcheryToggle = function() {
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        elems.forEach(function(html) {
+            var switchery = new Switchery(html, { size: 'small' });
         });
     };
 
@@ -112,14 +70,16 @@ var app = function() {
     }
 
     var menu = function() {
-        $(".nano").nanoScroller();
-        $("#leftside-navigation .sub-menu a").click(function() {
-            $("#leftside-navigation ul ul").slideUp();
-            if (!$(this).next().is(":visible")) {
-                $(this).next().slideDown();
-            }
+        var subMenu = $('.sidebar .nav');
+        $(subMenu).navgoco({
+            caretHtml: false,
+            accordion: true,
+            slide: {
+                  duration: 400,
+                  easing: 'swing'
+              }
+          });
 
-        });
     };
     //End functions
 
@@ -268,5 +228,3 @@ $(document).ready(function() {
     app.init();
 
 });
-
-

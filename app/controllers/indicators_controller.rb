@@ -54,10 +54,16 @@ class IndicatorsController < ApplicationController
 
 	def show
 		@indicator = Indicator.find(params[:id])
+
 	end
 
 	def edit
 		@indicator = Indicator.find(params[:id])
+		respond_to do |format|
+		    format.html  #If it's a html request this line tell rails to look for new_release.html.erb in your views directory
+		    format.js #If it's a js request this line tell rails to look for new_release.js.erb in your views directory
+		  end
+		
 	end
 
 	def update

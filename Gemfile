@@ -29,7 +29,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'lazy_high_charts'
 
-gem 'bootstrap', '~> 4.0.0.beta'
 
 gem "font-awesome-rails"
 
