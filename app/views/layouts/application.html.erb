@@ -16,6 +16,7 @@
             	 <%= link_to root_path, data: { turbolinks: false }, :class => "logo" do %><span>Flexi</span>tech<% end %>
             </div>
             <!--logo end-->
+            <% if user_signed_in? %>
             <div class="toggle-navigation toggle-left">
                 <button type="button" class="btn btn-default" id="toggle-left" data-toggle="tooltip" data-placement="right" title="Toggle Navigation">
                     <i class="fa fa-bars"></i>
@@ -24,6 +25,7 @@
             <div class="user-nav">
                 <ul>
                    <%= link_to new_indicator_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-primary"}  do %><i class="fa fa-bar-chart"></i> Nouvel Indicateur<% end %>
+                   <%= link_to 'Déconnexion', destroy_user_session_path, :method => :delete, class: "button" %>
                 </ul>
             </div>
         </header>
@@ -35,12 +37,19 @@
                     <%= link_to root_path, data: { turbolinks: false } do %><i class="fa fa-bar-chart"></i> indicateurs<% end %>
                 </li>
                 <li>
-		            <%= link_to indicators_path do %><i class="fa fa-book"></i> documentation<% end %>
-		        </li>
+                    <%= link_to indicators_path do %><i class="fa fa-book"></i> documentation<% end %>
+                </li>
             </ul>
         </nav>
         <!--sidebar left end-->
-
+        <% flash.each do |name, msg| %>
+         <div class="flash text-center">
+            <%= content_tag(:div, msg, class: "alert alert-info") %>
+          </div>
+        <% end %>
+        <% else %>
+            
+       <% end %>
 		<%= yield %>
     
 </body>
