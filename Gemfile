@@ -5,7 +5,7 @@ group :development do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg', '0.20'
+  gem 'pg', '~> 0.20.0'
 end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
@@ -28,7 +28,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'lazy_high_charts'
-
 
 gem "font-awesome-rails"
 
