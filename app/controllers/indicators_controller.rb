@@ -14,7 +14,7 @@ class IndicatorsController < ApplicationController
 					  		name= serie.split(',').map(&:to_s).first
 					  		graph = indicator.graph.split('_').map(&:to_s).last
 					  		if name.upcase=='OBJECTIF'
-					  			puts f.series(type: 'line', name: name , yAxis: 0, data: data)
+					  			puts f.series(type: 'line', name: name , yAxis: 0, data: data, color: '#ff5050')
 					  		else 
 					  			puts f.series(name: name , yAxis: 0, data: data)
 					  		end
