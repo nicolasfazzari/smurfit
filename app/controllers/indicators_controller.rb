@@ -12,20 +12,15 @@ class IndicatorsController < ApplicationController
 					  	serie.drop(1).each do |serie|
 					  		data= serie.split(',').map(&:to_i).drop(1)
 					  		name= serie.split(',').map(&:to_s).first
-					  		graph = indicator.graph.split('_').map(&:to_s).last
 					  		if name.upcase=='OBJECTIF'
-					  			puts f.series(type: 'line', name: name , yAxis: 0, data: data, color: '#ff5050')
+					  			puts f.series(type: 'line', name: name , yAxis: 0, data: data)
 					  		else 
 					  			puts f.series(name: name , yAxis: 0, data: data)
 					  		end
-					  		
 					  	end
 
-					  	if (indicator.graph == "stacked_bar") || (indicator.graph =="stacked_column") || (indicator.graph =="stacked_area")
-					  		f.plotOptions(series: {stacking: 'normal',dataLabels: {enabled: 'true',color: '#FFFFFF'}})
-					  	else
-					  		f.plotOptions(series: {dataLabels: {enabled: 'true'}})
-						end
+				
+					  f.plotOptions(series: {dataLabels: {enabled: 'true'}})
 					 
 					  f.title(text: indicator.name)
 					  f.xAxis(categories: x)
@@ -35,7 +30,7 @@ class IndicatorsController < ApplicationController
 					  ]
 
 					  f.legend(align: 'center', verticalAlign: 'bottom', y: 0, x: 0, layout: 'horizontal')
-					  f.chart({defaultSeriesType: indicator.graph.split('_').map(&:to_s).last})
+					  f.chart({defaultSeriesType: indicator.graph})
 			end
 			
 			@charts.push(instance_variable_set(:"@#{indicator.name.gsub(" ","_")}", @chart))

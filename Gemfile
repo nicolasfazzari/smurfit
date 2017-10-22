@@ -5,7 +5,7 @@ group :development do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg', '~> 0.20.0'
+  gem 'pg'
 end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'lazy_high_charts'
 
+
 gem "font-awesome-rails"
 
 # Use ActiveModel has_secure_password
@@ -39,8 +40,6 @@ gem "font-awesome-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-gem 'rails_12factor', group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
