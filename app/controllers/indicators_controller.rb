@@ -18,7 +18,7 @@ class IndicatorsController < ApplicationController
 					  		else 
 					  			puts f.series(name: name , yAxis: 0, data: data)
 					  		end
-					  		f.chart({defaultSeriesType: graph})
+					  		
 					  	end
 
 					  	if (indicator.graph == "stacked_bar") || (indicator.graph =="stacked_column") || (indicator.graph =="stacked_area")
@@ -35,7 +35,7 @@ class IndicatorsController < ApplicationController
 					  ]
 
 					  f.legend(align: 'center', verticalAlign: 'bottom', y: 0, x: 0, layout: 'horizontal')
-					  
+					  f.chart({defaultSeriesType: indicator.graph.split('_').map(&:to_s).last})
 			end
 			
 			@charts.push(instance_variable_set(:"@#{indicator.name.gsub(" ","_")}", @chart))
