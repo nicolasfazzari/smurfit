@@ -16,15 +16,11 @@
 							<% end %>
 							<p>
 								<%= f.label :graph %><br>
-								<%= f.select(:graph, ['column','bar','pie','line','area'], {}, { :class => 'form-control' }) %>
+								<%= f.select(:graph, ['column','bar','line','area','stacked_column','stacked_bar','stacked_area'], {}, { :class => 'form-control' }) %>
 							</p>
 							<p>
 								<%= f.label :name %><br>
 								<%= f.text_field :name,:placeholder => "Entrer un titre pour le graphiaue", :class=>"form-control" %>
-							</p>
-							<p>
-								<%= f.label :xaxis %><br>
-								<%= f.text_area :xaxis, :placeholder => "Entrer le titre de l'axe X ", :class=>"form-control", :style=>"min-height: 100px;" %>
 							</p>
 							<p>
 								<%= f.label :yaxis %><br>
