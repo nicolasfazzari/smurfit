@@ -1,4 +1,5 @@
 class IndicatorsController < ApplicationController
+
 	def index
 		@indicators = Indicator.all.order('created_at DESC')
 		@charts=[]
@@ -6,7 +7,6 @@ class IndicatorsController < ApplicationController
 			
 			@chart = LazyHighCharts::HighChart.new('graph') do |f|
 					  
-
 					  	serie = (indicator.data.split("\n"))
 					  	x = serie.first.split(',').map(&:to_s)
 					  	serie.drop(1).each do |serie|
@@ -80,7 +80,7 @@ class IndicatorsController < ApplicationController
 			render 'edit'
 		end
 	end
-
+	
 
 	def destroy
 		@indicator = Indicator.find(params[:id])

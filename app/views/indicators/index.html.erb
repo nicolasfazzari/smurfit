@@ -66,7 +66,7 @@
 							                                <h5 class="panel-title">HR</h5>
 							                                <div class="actions pull-right">
 							                                	 <%= link_to edit_indicator_path(indicator), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  do %>Edit<% end %> | 
-							                                    <%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "button" %>
+							                                    <%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete %>
 							                                </div>
 							                            </div>
 							                            <div class="panel-body">
