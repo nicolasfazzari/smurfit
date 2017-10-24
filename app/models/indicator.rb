@@ -3,4 +3,6 @@ class Indicator < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :data, presence: true
+
+
 end
