@@ -1,60 +1,27 @@
 <section class="main-content-wrapper">
-            <section id="main-content">
-						<div class="row">
-							<div class="col-md-3 col-sm-6">
-								<div class="dashboard-tile detail tile-red">
-									<div class="content">
-										<h1 class="text-left timer" data-speed="2500" data-to="180" data-from="0">
-											
-										</h1>
-										<p>Number of accidents with NO lost time this year</p>
-									</div>
-									<div class="icon">
-										<i class="fa fa-warning"></i>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6">
-								<div class="dashboard-tile detail tile">
-									<div class="content">
-										<h1 class="text-left timer" data-speed="2500" data-to="56" data-from="0">
-											
-											
-										</h1>
-										<p>since the last NO lost time accident</p>
-									</div>
-									<div class="icon">
-										<i class="fa  fa-smile-o"></i>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6">
-								<div class="dashboard-tile detail tile-blue">
-									<div class="content">
-										<h1 class="text-left timer" data-speed="2500" data-to="56" data-from="0">
-											
-										</h1>
-										<p>Number of accidents with lost time this year</p>
-									</div>
-									<div class="icon">
-										<i class="fa fa-warning"></i>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-3 col-sm-6">
-								<div class="dashboard-tile detail tile-purple">
-									<div class="content">
-										<h1 class="text-left timer" data-speed="2500" data-to="56" data-from="0">
-											
-										</h1>
-										<p>since the last lost time accident</p>
-									</div>
-									<div class="icon">
-										<i class="fa fa-smile-o"></i>
-									</div>
-								</div>
-							</div>
+	<section id="main-content">
+	    <div class="row">
+			<% @kpis.each.with_index do |kpi, index| %>
+				<div class="col-md-3 col-sm-6">
+					<div class="dashboard-tile detail tile-<%= kpi.color %>">
+						<div class="content">
+							<% if current_user.admin? %>
+								<%= link_to edit_kpi_path(kpi), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-kpi'}  do %>Edit<% end %> | 
+								<%= link_to 'X', kpi_path(kpi),data: {:confirm => 'Are you sure?'}, :method => :delete %>
+							<% end %>
+							<h1 class="text-left timer" data-speed="2500" data-to="180" data-from="0">
+								<%= kpi.datum %>
+							</h1>
+								<p><%= kpi.name %></p>
+						</div>
+						<div class="icon">
+							<i class="fa fa-warning"></i>
+						</div>
 					</div>
+				</div>
+			<% end %>
+		</div>
+           
 
 
 									<% @index=0 %>
@@ -65,8 +32,10 @@
 							                            <div class="panel-heading">
 							                                <h5 class="panel-title">HR</h5>
 							                                <div class="actions pull-right">
-							                                	 <%= link_to edit_indicator_path(indicator), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  do %>Edit<% end %> | 
-							                                    <%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete %>
+							                                	<% if current_user.admin? %>
+							                                	 	<%= link_to edit_indicator_path(indicator), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  do %>Edit<% end %> | 
+							                                    	<%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete %>
+							                                   	<% end %>
 							                                </div>
 							                            </div>
 							                            <div class="panel-body">
@@ -86,8 +55,11 @@
 							                            <div class="panel-heading">
 							                                <h5 class="panel-title">HR</h5>
 							                                <div class="actions pull-right">
+							                                	<% if current_user.admin? %>
 							                                    	<%= link_to edit_indicator_path(indicator), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  do %>Edit<% end %> |
-							                                    <%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "button"%>
+							                                    	<%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "button"%>
+							                                    <% end %>
+
 							                                </div>
 							                            </div>
 							                            <div class="panel-body">
@@ -107,12 +79,19 @@
          <!--main content end-->
          <!-- Basic Modal -->
     <div id="modal-window" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
 
-    </div>
-  </div>
-</div>
+		    </div>
+		  </div>
+	</div>
+	<div id="modal-kpi" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+
+		    </div>
+		  </div>
+	</div>
     <!-- End Basic Modal -->
 	  <!-- Form Modal -->
 

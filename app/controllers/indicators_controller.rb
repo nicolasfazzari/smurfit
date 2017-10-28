@@ -1,7 +1,8 @@
 class IndicatorsController < ApplicationController
-
+	before_filter :must_be_admin, only: [:new,:create,:edit,:update,:destroy]
 	def index
 		@indicators = Indicator.all.order('created_at DESC')
+		@kpis = Kpi.all
 		@charts=[]
 		@indicators.each do |indicator|
 			
@@ -51,7 +52,7 @@ class IndicatorsController < ApplicationController
 	def create
 		@indicator = Indicator.new(indicator_params)
 		if @indicator.save
-			redirect_to @indicator
+			redirect_to root_path
 		else
 			render 'new'
 		end
@@ -87,6 +88,12 @@ class IndicatorsController < ApplicationController
 		@indicator.destroy
 		redirect_to root_path
 	end
+
+	def must_be_admin
+	    unless current_user && current_user.admin?
+	      redirect_to root_path, notice: "must be admin"
+	    end
+  	end
 
 	private
 		def indicator_params

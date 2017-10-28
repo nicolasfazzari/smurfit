@@ -1,0 +1,37 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title" id="myModalLabel"> Indicator</h4>
+</div>
+<div class="modal-body">
+  <%= form_for(@kpi) do |f| %>
+    <% if @kpi.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@kpi.errors.count, "error") %> prohibited this kpi from being saved:</h2>
+
+        <ul>
+        <% @kpi.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, :class=>"form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :datum %><br>
+      <%= f.text_field :datum, :class=>"form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :color %><br>
+      <%= f.select(:color, [['white',''],'red','blue','purple'], {}, { :class => 'form-control' }) %>
+    </div>
+     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         <%= f.submit :class=>"btn btn-primary"  %>
+      </div>
+  <% end %>
+</div>
+
