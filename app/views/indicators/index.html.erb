@@ -7,7 +7,7 @@
 						<div class="content">
 							<% if current_user.admin? %>
 								<%= link_to edit_kpi_path(kpi), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-kpi'}  do %>Edit<% end %> | 
-								<%= link_to 'X', kpi_path(kpi),data: {:confirm => 'Are you sure?'}, :method => :delete %>
+								<%= link_to 'Delete', kpi_path(kpi),data: {:confirm => 'Are you sure?'}, :method => :delete %>
 							<% end %>
 							<h1 class="text-left timer" data-speed="2500" data-to="180" data-from="0">
 								<%= kpi.datum %>
@@ -34,7 +34,7 @@
 							                                <div class="actions pull-right">
 							                                	<% if current_user.admin? %>
 							                                	 	<%= link_to edit_indicator_path(indicator), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  do %>Edit<% end %> | 
-							                                    	<%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete %>
+							                                    	<%= link_to 'Delete', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete %>
 							                                   	<% end %>
 							                                </div>
 							                            </div>
@@ -57,7 +57,7 @@
 							                                <div class="actions pull-right">
 							                                	<% if current_user.admin? %>
 							                                    	<%= link_to edit_indicator_path(indicator), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  do %>Edit<% end %> |
-							                                    	<%= link_to 'X', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "button"%>
+							                                    	<%= link_to 'Delete', indicator_path(indicator),data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "button"%>
 							                                    <% end %>
 
 							                                </div>
