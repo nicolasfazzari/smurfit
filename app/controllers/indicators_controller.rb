@@ -14,7 +14,7 @@ class IndicatorsController < ApplicationController
 					  		data= serie.split(',').map(&:to_i).drop(1)
 					  		name= serie.split(',').map(&:to_s).first
 					  		graph = indicator.graph.split('_').map(&:to_s).last
-					  		if name.upcase=='OBJECTIF'
+					  		if (name.upcase=='OBJECTIF' || name.upcase=='BUDGET')
 					  			puts f.series(type: 'line', name: name , yAxis: 0, data: data, color: '#ff5050')
 					  		else 
 					  			puts f.series(name: name , yAxis: 0, data: data)
