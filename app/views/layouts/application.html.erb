@@ -30,6 +30,9 @@
                         <ul class="dropdown-menu animated fadeInDown">
                            <% if current_user.admin? %>
                                 <li>
+                                    <%= link_to rails_admin_path do %><i class="fa fa-home"></i> Admin<% end %>
+                                </li>
+                                <li>
                                     <%= link_to new_indicator_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  do %><i class="fa fa-bar-chart"></i> Add indicator<% end %>
                                 </li>
                                 <li>
