@@ -31,6 +31,8 @@ gem 'lazy_high_charts'
 
 gem "font-awesome-rails"
 
+gem 'rails_admin', '~> 1.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :kpis
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :kpis
   devise_for :users
   resources :indicators
