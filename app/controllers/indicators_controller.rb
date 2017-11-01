@@ -11,7 +11,7 @@ class IndicatorsController < ApplicationController
 					  	serie = (indicator.data.split("\n"))
 					  	x = serie.first.split(',').map(&:to_s)
 					  	serie.drop(1).each do |serie|
-					  		data= serie.split(',').map(&:to_i).drop(1)
+					  		data= serie.split(',').map(&:to_f).drop(1)
 					  		name= serie.split(',').map(&:to_s).first
 					  		graph = indicator.graph.split('_').map(&:to_s).last
 					  		if (name.upcase=='OBJECTIF' || name.upcase=='BUDGET')
@@ -29,7 +29,6 @@ class IndicatorsController < ApplicationController
 					  		f.plotOptions(series: {dataLabels: {enabled: 'true'}})
 					  		f.yAxis [{title: {text: indicator.yaxis, margin: 70} },]
 						end
-					 
 					  f.title(text: indicator.name)
 					  f.xAxis(categories: x)
 					 
