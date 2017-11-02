@@ -37,7 +37,7 @@ class IndicatorsController < ApplicationController
 					  f.chart({defaultSeriesType: indicator.graph.split('_').map(&:to_s).last})
 			end
 			
-			@charts.push(instance_variable_set(:"@#{indicator.name.gsub(" ","_")}", @chart))
+			@charts.push(instance_variable_set(:"@#{('a'..'z').to_a.shuffle.join}", @chart))
 		end
 		
 
