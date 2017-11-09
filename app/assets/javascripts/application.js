@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery-3.2.1.min
+//= require jquery-3.1.0.min
 //= require jquery-ui
 //= require jquery_ujs
 //= require dataTables.min
