@@ -9,11 +9,15 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
+ 
+ *= require_tree .
+ *= require bootstrap.min
+ *= require jquery-ui
+  *= require dataTables/jquery.dataTables
+ *= require_self
 
  */
 
-@import "bootstrap.min";
 @import "font-awesome";
 @import "animate";
 
@@ -2759,3 +2763,5 @@ h3.timeline-title {
     display: none;
   }
 }
+
+

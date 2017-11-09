@@ -40,7 +40,7 @@ class IndicatorsController < ApplicationController
 			@charts.push(instance_variable_set(:"@#{('a'..'z').to_a.shuffle.join}", @chart))
 		end
 		
-
+		@documentations = Documentation.all
 	end
 
 	def new

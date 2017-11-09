@@ -7,6 +7,7 @@ end
 group :production do
   gem 'pg', '~> 0.20.0'
 end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
 # Use sqlite3 as the database for Active Record
@@ -33,6 +34,9 @@ gem "font-awesome-rails"
 
 gem 'rails_admin', '~> 1.2'
 
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+
+gem 'jquery-ui-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @documentation.format %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @documentation.title %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @documentation.version %>
+</p>
+
+<%= link_to 'Edit', edit_documentation_path(@documentation) %> |
+<%= link_to 'Back', documentations_path %>
