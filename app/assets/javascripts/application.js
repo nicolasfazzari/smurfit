@@ -14,7 +14,6 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require dataTables.min
-//= require dataTables/jquery.dataTables
 //= require highcharts/highcharts
 //= require turbolinks
 //= require_tree .
