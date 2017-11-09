@@ -35,8 +35,8 @@
                                       <td><%= documentation.format%></td>
                                       <td><%= documentation.title %></td>
                                       <td><%= documentation.version %></td>
-                                      <td width="5%"><%= link_to documentation_path(documentation), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-primary"}  do %><i class="fa fa-edit"></i> Show<% end %></td></td>
-                                      <td width="5%"><%= link_to edit_documentation_path(documentation), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', :class => "btn btn-default"}  do %><i class="fa fa-edit"></i> Edit<% end %></td>
+                                      <td width="5%"><%= link_to new_documentation_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-new', :class => "btn btn-primary"}  do %><i class="fa fa-search"></i> Show<% end %></td></td>
+                                      <td width="5%"><%= link_to edit_documentation_path(documentation), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit', :class => "btn btn-default"}  do %><i class="fa fa-edit"></i> Edit<% end %></td>
                                       <td width="5%"><%= link_to documentation_path(documentation),data: {:confirm => 'Are you sure?'}, :method => :delete, :class => "btn btn-danger" do %><i class="fa fa-trash-o"></i> Delete<% end %></td>
                                     </tr> 
 
@@ -46,7 +46,7 @@
 
                               <br>
 
-                              <%= link_to 'New Documentation', new_documentation_path %>
+                              <%= link_to new_documentation_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-new', :class => "btn btn-primary"}  do %><i class="fa fa-plus"></i> New documentation<% end %>
 
           </div>
         </div>
@@ -63,6 +63,26 @@
     } );
   </script>
   
+  <!--main content end-->
+         <!-- Basic Modal -->
+    <div id="modal-new" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
 
+        </div>
+      </div>
+  </div>
+  
+  <div id="modal-edit" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        </div>
+      </div>
+  </div>
+    <!-- End Basic Modal -->
+    <!-- Form Modal -->
+
+      <!-- End Form Modal -->
 
 

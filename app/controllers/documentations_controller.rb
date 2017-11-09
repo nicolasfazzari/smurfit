@@ -15,7 +15,7 @@ class DocumentationsController < ApplicationController
   # GET /documentations/1
   # GET /documentations/1.json
   def show
- 
+    @documentations = Documentation.find(params[:id])
   end
 
   # GET /documentations/new
@@ -25,6 +25,12 @@ class DocumentationsController < ApplicationController
 
   # GET /documentations/1/edit
   def edit
+    @documentations = Documentation.find(params[:id])
+    respond_to do |format|
+        format.html  #If it's a html request this line tell rails to look for new_release.html.erb in your views directory
+        format.js #If it's a js request this line tell rails to look for new_release.js.erb in your views directory
+      end
+    
   end
 
   # POST /documentations
@@ -46,14 +52,12 @@ class DocumentationsController < ApplicationController
   # PATCH/PUT /documentations/1
   # PATCH/PUT /documentations/1.json
   def update
-    respond_to do |format|
-      if @documentation.update(documentation_params)
-        format.html { redirect_to @documentation, notice: 'Documentation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @documentation }
-      else
-        format.html { render :edit }
-        format.json { render json: @documentation.errors, status: :unprocessable_entity }
-      end
+    @documentations = Documentation.find(params[:id])
+
+    if @documentations.update(params[:documentation].permit(:format, :title, :version))
+      redirect_to root_path
+    else
+      render 'edit'
     end
   end
 
