@@ -13,8 +13,8 @@
 //= require jquery-3.2.1.slim.min
 //= require jquery-ui
 //= require jquery_ujs
-//= require dataTables/jquery.dataTables
 //= require dataTables.min
+//= require dataTables/jquery.dataTables
 //= require highcharts/highcharts
 //= require turbolinks
 //= require_tree .

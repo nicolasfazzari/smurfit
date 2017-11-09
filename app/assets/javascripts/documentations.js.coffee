@@ -1,2 +1,0 @@
-jQuery ->
-  $('#example').DataTable()
