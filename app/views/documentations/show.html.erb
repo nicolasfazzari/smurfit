@@ -15,5 +15,10 @@
   <%= @documentation.version %>
 </p>
 
+p>
+  <strong>Version:</strong>
+  <%= @documentation.file %>
+</p>
+
 <%= link_to 'Edit', edit_documentation_path(@documentation) %> |
 <%= link_to 'Back', documentations_path %>

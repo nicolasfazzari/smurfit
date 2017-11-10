@@ -4,7 +4,7 @@
                     <h4 class="modal-title" id="myModalLabel"> Documentation</h4>
                 </div>
                 <div class="modal-body">
-                    <%= form_for(@documentation) do |f| %>
+                    <%= form_for @documentation, html: { multipart: true }  do |f| %>
                     <% if @documentation.errors.any? %>
                <div id="error_explanation">
                 <h2><%= pluralize(@documentation.errors.count, "error") %> prohibited this documentation from being saved:</h2>
@@ -27,6 +27,10 @@
               <p>
                 <%= f.label :version %><br>
                 <%= f.number_field :version, :class=>"form-control" %>
+              </p>
+              <p>
+                <%= f.label :file %><br>
+                <%= f.file_field :file %>
               </p>
                       <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

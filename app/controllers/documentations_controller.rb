@@ -15,7 +15,7 @@ class DocumentationsController < ApplicationController
   # GET /documentations/1
   # GET /documentations/1.json
   def show
-    @documentations = Documentation.find(params[:id])
+    @documentation = Documentation.find(params[:id])
   end
 
   # GET /documentations/new
@@ -54,8 +54,8 @@ class DocumentationsController < ApplicationController
   def update
     @documentations = Documentation.find(params[:id])
 
-    if @documentations.update(params[:documentation].permit(:format, :title, :version))
-      redirect_to root_path
+    if @documentations.update(params[:documentation].permit(:format, :title, :version, :file))
+      redirect_to documentations_path
     else
       render 'edit'
     end
@@ -79,6 +79,6 @@ class DocumentationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def documentation_params
-      params.require(:documentation).permit(:format, :title, :version)
+      params.require(:documentation).permit(:format, :title, :version, :file)
     end
 end

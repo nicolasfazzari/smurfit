@@ -34,6 +34,10 @@ gem 'rails_admin', '~> 1.2'
 
 gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
+gem 'paperclip', '~> 4.2.1'
+
+gem 'aws-sdk'
+
 gem 'jquery-ui-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
