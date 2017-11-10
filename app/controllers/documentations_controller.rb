@@ -40,7 +40,7 @@ class DocumentationsController < ApplicationController
 
     respond_to do |format|
       if @documentation.save
-        format.html { redirect_to @documentation, notice: 'Documentation was successfully created.' }
+        format.html { redirect_to redirect_to documentations_path}
         format.json { render :show, status: :created, location: @documentation }
       else
         format.html { render :new }
