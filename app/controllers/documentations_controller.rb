@@ -54,7 +54,7 @@ class DocumentationsController < ApplicationController
   def update
     @documentations = Documentation.find(params[:id])
 
-    if @documentations.update(params[:documentation].permit(:format, :title, :version, :file))
+    if @documentations.update(params[:documentation].permit(:format, :title, :version, :file, :process))
       redirect_to documentations_path
     else
       render 'edit'
@@ -79,6 +79,6 @@ class DocumentationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def documentation_params
-      params.require(:documentation).permit(:format, :title, :version, :file)
+      params.require(:documentation).permit(:format, :title, :version, :file, :process)
     end
 end

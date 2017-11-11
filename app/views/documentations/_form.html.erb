@@ -17,6 +17,10 @@
               </div>
               <% end %>
               <p>
+                  <%= f.label :process %><br>
+                  <%= f.select(:process, ['RH','Production','Achat','Qualité','Finance','Maintenance','Vente'], {}, { :class => 'form-control' }) %>
+              </p>
+              <p>
                   <%= f.label :format %><br>
                   <%= f.text_field :format,:placeholder => "Entrer un format", :class=>"form-control" %>
               </p>

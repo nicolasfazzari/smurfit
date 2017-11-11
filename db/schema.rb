@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110192734) do
+ActiveRecord::Schema.define(version: 20171111072058) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20171110192734) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+    t.string   "process"
   end
 
   create_table "indicators", force: :cascade do |t|
