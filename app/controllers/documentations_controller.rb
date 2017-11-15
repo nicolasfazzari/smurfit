@@ -1,6 +1,6 @@
 class DocumentationsController < ApplicationController
   before_action :set_documentation, only: [:show, :edit, :update, :destroy]
-
+  before_filter :must_be_admin, only: [:new,:create,:edit,:update,:destroy]
   # GET /documentations
   # GET /documentations.json
   def index
@@ -70,6 +70,12 @@ class DocumentationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def must_be_admin
+      unless current_user && current_user.admin?
+        redirect_to root_path, notice: "must be admin"
+      end
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
