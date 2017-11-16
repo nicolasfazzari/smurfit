@@ -1,0 +1,43 @@
+<section class="main-content-wrapper">
+	<section id="main-content">
+          <div class="row">
+                    <div class="col-md-12">
+                        <!--breadcrumbs start -->
+                        <ul class="breadcrumb">
+                            <li><%= link_to 'Todo List', todo_lists_path %>
+                            </li>
+                            <li class="active"><%= @todo_list.title %></li>
+                        </ul>
+                    </div>
+                </div>
+         <div class="row">
+          <div class="col-md-12">
+              <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><%= @todo_list.title %></h3>
+                        <div class="actions pull-right">
+                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-times"></i>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                       <table id="todolist" class="table table-striped" cellspacing="0" width="100%">
+                        <thead>
+                          <tr>
+                            <th>Title</th>
+                            <th>Deadline</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                          </tr>
+                        </thead>
+                          <tbody>
+                            <%= render @todo_list.todo_items %>
+                            <%= render "todo_items/form" %>
+                          </tbody>
+                      </table>
+                    </div>
+                  </div>
+           </div>
+        </div>
+    </section>
+</section>

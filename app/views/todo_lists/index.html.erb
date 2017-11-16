@@ -1,0 +1,49 @@
+<section class="main-content-wrapper">
+            <section id="main-content">
+          
+
+                <div class="row">
+                    <div class="col-md-12">
+                         <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">ALL ACTION PLANS</h3>
+                                <div class="actions pull-right">
+                                    <%= link_to 'Create a new action plan',new_todo_list_path,{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-new',:class => "btn btn-primary btn-xs"}  %>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-hover" cellspacing="0" width="100%">
+                                
+                                  <tbody>
+                                    <% @todo_lists.each do |todo_list| %>
+                                      <tr>
+                                        <td width="5%" style="vertical-align: middle;text-align:center;"><span class="label label-primary" >Active</span></td>
+                                        <td width="25%"><div><h4><%= todo_list.title %></h4><%= todo_list.description %></div></td>
+                                        <td width="10%" style="vertical-align: middle;text-align:center;"><%= todo_list.created_at.strftime('%v') %></td>
+                                        <td width="15%" style="vertical-align: middle;text-align:center;">Completion with :<div class="progress"><div class="progress-bar progress-bar-primary" style="width: 20%">20%</div></div></td>
+                                        <td width="5%" style="vertical-align: middle;text-align:center;"><%= link_to todo_list,data: { turbolinks: false }, :class => "btn btn-primary" do %><i class="fa fa-search"> Show</i><% end %></td>
+                                        <td width="5%" style="vertical-align: middle;text-align:center;"><%= link_to edit_todo_list_path(todo_list), :class => "btn btn-default" do %><i class="fa fa-edit"> Edit</i><% end %></td>
+                                        <td width="5%" style="vertical-align: middle;text-align:center;"><%= link_to todo_list, method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger", :style=>'color:#FFFFFF;' do %><i class="fa fa-trash-o"> Delete</i><% end %></td>
+                                      </tr>
+                                    <% end %>
+                                  </tbody>
+                                </table>
+
+                                <br>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+  </section>
+</section>
+ <!--main content end-->
+         <!-- Basic Modal -->
+    <div id="modal-new" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        </div>
+      </div>
+  </div>
