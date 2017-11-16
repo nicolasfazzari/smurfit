@@ -46,6 +46,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (4.0.0)
+      activerecord (>= 4.0)
     arel (6.0.4)
     aws-sdk (1.64.0)
       aws-sdk-v1 (= 1.64.0)
@@ -55,6 +57,8 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.3)
       debug_inspector (>= 0.0.1)
+    bootstrap-datepicker-rails (1.7.1.1)
+      railties (>= 3.0)
     builder (3.2.3)
     byebug (9.1.0)
     climate_control (0.2.0)
@@ -238,7 +242,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 4.0)
   aws-sdk (< 2.0)
+  bootstrap-datepicker-rails
   byebug
   coffee-rails (~> 4.1.0)
   devise

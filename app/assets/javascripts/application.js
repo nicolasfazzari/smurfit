@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require dataTables.min
 //= require highcharts/highcharts
+//= require bootstrap-datepicker
 //= require turbolinks
 //= require_tree .
 

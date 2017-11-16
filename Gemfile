@@ -39,6 +39,10 @@ gem 'paperclip', '~> 4.2.1'
 gem 'aws-sdk', '< 2.0'
 
 gem 'jquery-ui-rails'
+
+gem 'bootstrap-datepicker-rails'
+
+gem 'acts-as-taggable-on', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
