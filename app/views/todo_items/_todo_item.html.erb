@@ -1,4 +1,5 @@
  <tr>
+ 	<td><%= link_to "Mark as complete", complete_todo_list_todo_item_path(@todo_list,todo_item.id), method: :patch %></td>
     <td><%= todo_item.content %></td>
     <td><%= todo_item.deadline %></td>
    	<td><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(t)}.join(',') %></td>

@@ -23,6 +23,11 @@ class TodoListsController < ApplicationController
 
   # GET /todo_lists/1/edit
   def edit
+    @todo_list = TodoList.find(params[:id])
+      respond_to do |format|
+        format.html  #If it's a html request this line tell rails to look for new_release.html.erb in your views directory
+        format.js #If it's a js request this line tell rails to look for new_release.js.erb in your views directory
+      end
   end
 
   # POST /todo_lists
