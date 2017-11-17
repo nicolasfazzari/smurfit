@@ -10,7 +10,6 @@ class TodoItemsController < ApplicationController
 
 	# GET /todo_lists/1/edit
 	 def edit
-	 	
 		    respond_to do |format|
 		        format.html  #If it's a html request this line tell rails to look for new_release.html.erb in your views directory
 		        format.js #If it's a js request this line tell rails to look for new_release.js.erb in your views directory
@@ -18,6 +17,7 @@ class TodoItemsController < ApplicationController
 	 end
 
 	 def update
+
 	    if @todo_item.update(todo_item_params)
 	      redirect_to todo_list_todo_item_path
 	    else
@@ -56,7 +56,7 @@ class TodoItemsController < ApplicationController
 	end
 
 	def todo_item_params
-		params[:todo_item].permit(:content)
+		params[:todo_item].permit(:content, :deadline, :tag_list)
 	end
 
 

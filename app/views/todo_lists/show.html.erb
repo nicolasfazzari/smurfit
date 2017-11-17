@@ -12,7 +12,7 @@
                     </div>
                 </div>
          <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-10 col-md-offset-1">
               <div class="panel panel-default">
                     <div class="panel-heading">
                       <h3 class="panel-title">Create a task</h3>
@@ -24,7 +24,7 @@
            </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-10 col-md-offset-1">
               <span style="color: #9eafba;text-decoration: none;font-size: 1.5em;"><i class="fa fa-tag fa-1x"> Filter :</i></span>
               
               <span class="btn btn-primary btn-sm"><%= link_to "All", todo_list_path(@todo_list), :style=>'color:#FFFFFF;' %></span>
@@ -42,7 +42,7 @@
 
 
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-10 col-md-offset-1">
               <div class="panel panel-default">
                     
                     <div class="panel-body">
@@ -62,31 +62,31 @@
                                       <tr>
                                        
                                           <% if todo_item.completed? %>
-                                            <div class="complete">
-                                              <td width="5%" style="vertical-align: middle;"><%= link_to incomplete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %><i style="opacity:0.4;" class="fa fa-check"></i><% end %></td>
-                                            </div>
-                                            <div class="todo_item">
-                                             <td style="vertical-align: middle;opacity:0.4"><strike><%= todo_item.content %></strike></td> 
-                                              <td width="10%" style="vertical-align: middle;opacity:0.4"><strike><%= todo_item.deadline %></strike></td> 
+                                         
+                                              <td width="5%" style="vertical-align: middle; text-align:center"><%= link_to incomplete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %><i style="opacity:0.4;" class="fa fa-check"></i><% end %></td>
+                                            
+                                            
+                                              <td style="vertical-align: middle;opacity:0.4"><strike><%= todo_item.content %></strike></td> 
+                                              <td width="10%" style="vertical-align: middle;opacity:0.4"><strike><%= todo_item.deadline.strftime('%v') %></strike></td> 
                                               <td width="30%" style="vertical-align: middle;opacity:0.4" ><strike><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></strike></td>
-                                            </div>
-                                            <div class="trash">
+                                           
+                                            
                                               <td width="5%"><%= link_to edit_todo_list_todo_item_path(@todo_list, todo_item.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit', :class => "btn btn-default"}  do %><i style="opacity:0.4;" class="fa fa-edit"></i><% end %></td>
                                               <td width="5%" style="vertical-align: middle;"><%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger", :style=>'color:#FFFFFF;' do %><i style="opacity:0.4;" class="fa fa-trash-o"></i><% end %></td>
-                                            </div>
+                                           
                                           <% else %>
-                                            <div class="complete">
-                                              <td width="5%" style="vertical-align: middle;"><%= link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %><i class="fa fa-check"></i><% end %></td>
-                                            </div>
-                                            <div class="todo_item">
+                                           
+                                              <td width="5%" style="vertical-align: middle;text-align:center"><%= link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %><i class="fa fa-check"></i><% end %></td>
+                                         
+                                           
                                              <td style="vertical-align: middle;"><%= todo_item.content %></td> 
-                                              <td width="10%" style="vertical-align: middle;"><%= todo_item.deadline %></td> 
+                                              <td width="10%" style="vertical-align: middle;"><%= todo_item.deadline.strftime('%v') %></td> 
                                               <td width="30%" style="vertical-align: middle;" ><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></td>
-                                            </div>
-                                            <div class="trash">
+                                           
+                                            
                                               <td width="5%"><%= link_to edit_todo_list_todo_item_path(@todo_list, todo_item.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit', :class => "btn btn-default"}  do %><i class="fa fa-edit"></i><% end %></td>
                                               <td width="5%" style="vertical-align: middle;"><%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger", :style=>'color:#FFFFFF;' do %><i class="fa fa-trash-o"></i><% end %></td>
-                                            </div>
+                                          
 
                                           <% end %>
               
