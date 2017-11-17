@@ -67,7 +67,7 @@
                                             
                                             
                                               <td style="vertical-align: middle;opacity:0.4"><strike><%= todo_item.content %></strike></td> 
-                                              <td width="10%" style="vertical-align: middle;opacity:0.4"><strike><%= todo_item.deadline.strftime('%v') %></strike></td> 
+                                              <td width="10%" style="vertical-align: middle;opacity:0.4"><strike><%= todo_item.deadline %></strike></td> 
                                               <td width="30%" style="vertical-align: middle;opacity:0.4" ><strike><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></strike></td>
                                            
                                             
@@ -80,7 +80,7 @@
                                          
                                            
                                              <td style="vertical-align: middle;"><%= todo_item.content %></td> 
-                                              <td width="10%" style="vertical-align: middle;"><%= todo_item.deadline.strftime('%v')  %></td> 
+                                              <td width="10%" style="vertical-align: middle;"><%= todo_item.deadline %></td> 
                                               <td width="30%" style="vertical-align: middle;" ><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></td>
                                            
                                             
