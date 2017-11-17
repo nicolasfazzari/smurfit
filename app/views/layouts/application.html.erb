@@ -60,7 +60,7 @@
                 <li class="<%= 'active' if current_page?(documentations_path) %>">
                     <%= link_to documentations_path, data: { turbolinks: false } do %><i class="fa fa-book"></i> documentation<% end %>
                 </li>
-                <li class="<%= 'active' if current_page?(todo_lists_path) %>">
+                <li class="<%= 'active' if current_page?(todo_lists_path) || current_page?(action:'show') %>">
                     <%= link_to todo_lists_path, data: { turbolinks: false } do %><i class="fa fa-tasks"></i> task management<% end %>
                 </li>
             </ul>
