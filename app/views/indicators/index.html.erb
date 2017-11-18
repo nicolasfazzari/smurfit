@@ -3,7 +3,7 @@
 								    <div class="row">
 										<% @kpis.each.with_index do |kpi, index| %>
 											<div class="col-md-3 col-sm-6">
-												<div class="dashboard-tile detail tile-<%= kpi.color %>">
+												<div class="dashboard-tile detail tile-<%= kpi.color %>" style="height:180px">
 													<div class="pull-right">
 														<p style="font-size:0.7em;">Updated at: <%= kpi.updated_at.strftime('%v') %></p>
 													</div>
