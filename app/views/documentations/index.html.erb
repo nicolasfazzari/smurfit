@@ -9,16 +9,15 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">Documentation</h3>
                                 <div class="actions pull-right">
-                                    <i class="fa fa-chevron-down"></i>
-                                    <i class="fa fa-times"></i>
+                                    <% if current_user.admin? %>
+                                      <%= link_to "New documentation", new_documentation_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-new', :class => "btn btn-primary btn-xs"}%> 
+                                    <% end %>
                                 </div>
                             </div>
                             <div class="panel-body">
 
                               <p id="notice"><%= notice %></p>
-                              <% if current_user.admin? %>
-                                  <%= link_to new_documentation_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-new', :class => "btn btn-primary"}  do %><i class="fa fa-upload"></i> New documentation<% end %>
-                              <% end %>
+                             
                               <table id="documentations" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                   <tr>

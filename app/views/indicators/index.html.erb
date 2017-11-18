@@ -26,7 +26,12 @@
 													<div class="icon">
 														<i class="fa fa-warning"></i>
 													</div>
+													<div class="pull-right">
+														<p style="font-size:0.7em;">Updated at: <%= kpi.updated_at.strftime('%v') %></p>
+													</div>
+													
 												</div>
+
 											</div>
 										<% end %>
 									</div>
@@ -60,6 +65,9 @@
 																	<%= high_chart(('a'..'z').to_a.shuffle.join, @charts[@index]) %>
 																	<% @index += 1 %>
 															</div>
+															<div class="pull-right">
+																<p style="font-size:0.7em;">Updated at: <%= indicator.updated_at.strftime('%v') %></p>
+															</div>
 														</div>
 						                            </div>
 						                        </div>
@@ -82,7 +90,6 @@
 								                                      </ul>
 								                                    </div>
 							                                    <% end %>
-
 							                                </div>
 							                            </div>
 							                            <div class="panel-body">
@@ -90,6 +97,9 @@
 																<h2 class="title"></h2>
 																	<%= high_chart(('a'..'z').to_a.shuffle.join, @charts[@index]) %>
 																	<% @index += 1 %>
+															</div>
+															<div class="pull-right">
+																<p style="font-size:0.7em;">Updated at: <%= indicator.updated_at.strftime('%v') %></p>
 															</div>
 														</div>
 						                            </div>
