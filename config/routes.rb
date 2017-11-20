@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'todo_lists/:todo_list_id/tags/:tag', to: 'todo_lists#show', as: :tag
+  get 'todo_lists/:todo_list_id/typeahead/:query' => 'todo_items#typeahead'
   resources :todo_lists do
   	resources :todo_items do
         member do

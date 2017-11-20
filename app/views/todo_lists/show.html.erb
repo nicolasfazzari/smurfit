@@ -53,8 +53,7 @@
                             <th>Title</th>
                             <th>Deadline</th>
                             <th>Tags</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Setting</th>
                           </tr>
                         </thead>
                           <tbody>
@@ -69,23 +68,40 @@
                                               <td style="vertical-align: middle;opacity:0.4"><strike><%= todo_item.content %></strike></td> 
                                               <td width="10%" style="vertical-align: middle;opacity:0.4"><strike><%= todo_item.deadline.strftime('%v') %></strike></td> 
                                               <td width="30%" style="vertical-align: middle;opacity:0.4" ><strike><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></strike></td>
-                                           
+
+                                               <td width="5%" style="vertical-align: middle;">
+                                                  <div class="btn-group">
+                                                  <button type="button" class="btn btn-default btn-xs dropdown-toggle" style="opacity:0.4" data-toggle="dropdown">
+                                                    <i class="fa fa-cog"></i><span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu" role="menu">
+                                                    <li><%= link_to "Edit", edit_todo_list_todo_item_path(@todo_list, todo_item.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit'}%></li>
+                                                    <li><%= link_to "Delete", todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?'} %></li>
+                                                  </ul>
+                                                </div>
+                                              </td>
                                             
-                                              <td width="5%"><%= link_to edit_todo_list_todo_item_path(@todo_list, todo_item.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit', :class => "btn btn-default"}  do %><i style="opacity:0.4;" class="fa fa-edit"></i><% end %></td>
-                                              <td width="5%" style="vertical-align: middle;"><%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger", :style=>'color:#FFFFFF;' do %><i style="opacity:0.4;" class="fa fa-trash-o"></i><% end %></td>
+                                      
                                            
                                           <% else %>
                                            
-                                              <td width="5%" style="vertical-align: middle;text-align:center"><%= link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %><i class="fa fa-check"></i><% end %></td>
+                                              <td width="5%" style="vertical-align: middle;text-align:center"><%= link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %><i class="fa fa-check"> </i><% end %></td>
                                          
                                            
-                                             <td style="vertical-align: middle;"><%= todo_item.content %></td> 
+                                              <td style="vertical-align: middle;"><%= todo_item.content %></td> 
                                               <td width="10%" style="vertical-align: middle;"><%= todo_item.deadline.strftime('%v')  %></td> 
                                               <td width="30%" style="vertical-align: middle;" ><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></td>
-                                           
-                                            
-                                              <td width="5%"><%= link_to edit_todo_list_todo_item_path(@todo_list, todo_item.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit', :class => "btn btn-default"}  do %><i class="fa fa-edit"></i><% end %></td>
-                                              <td width="5%" style="vertical-align: middle;"><%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger", :style=>'color:#FFFFFF;' do %><i class="fa fa-trash-o"></i><% end %></td>
+                                              <td width="5%" style="vertical-align: middle">
+                                                  <div class="btn-group">
+                                                  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-cog"> </i><span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu" role="menu">
+                                                    <li><%= link_to "Edit", edit_todo_list_todo_item_path(@todo_list, todo_item.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit'}%></li>
+                                                    <li><%= link_to "Delete", todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?'} %></li>
+                                                  </ul>
+                                                </div>
+                                              </td>
                                           
 
                                           <% end %>
