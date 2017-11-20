@@ -13,7 +13,7 @@ class TodoListsController < ApplicationController
     else
       @todo_item = @todo_list.todo_items.all
     end
-    record_history
+    
   end
 
   # GET /todo_lists/new
@@ -76,16 +76,5 @@ class TodoListsController < ApplicationController
     def todo_list_params
       params.require(:todo_list).permit(:title, :description)
     end
-
-     def record_history
-      session[:history] ||= []
-      session[:history].push request.url
-      session[:history] = session[:history].last(10) # limit the size to 10
-    end
-
-    def back
-      session[:history].pop
-    end
-
 
 end

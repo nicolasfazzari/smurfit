@@ -41,12 +41,12 @@ class TodoItemsController < ApplicationController
 	def complete
 		@todo_item.update_attribute(:completed_at, Time.now)
 
-		redirect_to back
+		redirect_to :back
 	end
 
 	def incomplete
 		@todo_item.update_attribute(:completed_at, nil)
-		redirect_to back
+		redirect_to :back
 	end
 
 	private
@@ -62,9 +62,4 @@ class TodoItemsController < ApplicationController
 	def todo_item_params
 		params[:todo_item].permit(:content, :deadline, :tag_list)
 	end
-
-	 
-    def back
-      session[:history].pop
-    end
 end
