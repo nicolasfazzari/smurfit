@@ -40,7 +40,7 @@ class TodoItemsController < ApplicationController
 
 	def complete
 		@todo_item.update_attribute(:completed_at, Time.now)
-		
+
 		redirect_to back
 	end
 
@@ -63,12 +63,7 @@ class TodoItemsController < ApplicationController
 		params[:todo_item].permit(:content, :deadline, :tag_list)
 	end
 
-	 def record_history
-      session[:history] ||= []
-      session[:history].push request.url
-      session[:history] = session[:history].last(10) # limit the size to 10
-    end
-
+	 
     def back
       session[:history].pop
     end
