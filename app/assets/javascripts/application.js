@@ -231,7 +231,7 @@ var app = function() {
 }();
 
 //Load global functions
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
     app.init();
 
 });
