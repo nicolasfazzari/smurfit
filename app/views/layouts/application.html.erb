@@ -13,7 +13,7 @@
         <header id="header">
             <!--logo start-->
             <div class="brand">
-            	 <%= link_to root_path, data: { turbolinks: false }, :class => "logo" do %><span>Flexi</span>tech<% end %>
+            	 <%= link_to root_path, :class => "logo" do %><span>Flexi</span>tech<% end %>
             </div>
             <!--logo end-->
             <div class="toggle-navigation toggle-left">
@@ -55,13 +55,13 @@
             <h5 class="sidebar-header">Navigation</h5>
             <ul class="nav nav-pills nav-stacked">
                 <li class="<%= 'active' if current_page?(root_path) %>">
-                    <%= link_to root_path, data: { turbolinks: false } do %><i class="fa fa-bar-chart"></i> indicateurs<% end %>
+                    <%= link_to root_path do %><i class="fa fa-bar-chart"></i> indicateurs<% end %>
                 </li>
                 <li class="<%= 'active' if current_page?(documentations_path) %>">
-                    <%= link_to documentations_path, data: { turbolinks: false } do %><i class="fa fa-book"></i> documentation<% end %>
+                    <%= link_to documentations_path do %><i class="fa fa-book"></i> documentation<% end %>
                 </li>
                 <li class="<%= 'active' if current_page?(todo_lists_path) %>">
-                    <%= link_to todo_lists_path, data: { turbolinks: false } do %><i class="fa fa-tasks"></i> task management<% end %>
+                    <%= link_to todo_lists_path do %><i class="fa fa-tasks"></i> task management<% end %>
                 </li>
             </ul>
         </nav>
