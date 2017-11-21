@@ -2,6 +2,15 @@ class IndicatorsController < ApplicationController
 	before_filter :must_be_admin, only: [:new,:create,:edit,:update,:destroy]
 	def index
 		@indicators = Indicator.all.order('created_at DESC')
+
+		if params[:category].blank?
+			@indicators = Indicator.all.order('created_at DESC')
+		else
+			@category_id=Category.find_by(name: params[:category]).id
+			@indicators = Indicator.where(category_id: @category_id).order('created_at DESC')
+		end
+
+
 		@kpis = Kpi.all
 		@charts=[]
 		@indicators.each do |indicator|
@@ -73,7 +82,7 @@ class IndicatorsController < ApplicationController
 	def update
 		@indicator = Indicator.find(params[:id])
 
-		if @indicator.update(params[:indicator].permit(:name, :data, :graph, :xaxis, :yaxis))
+		if @indicator.update(params[:indicator].permit(:name, :data, :graph, :xaxis, :yaxis, :category_id))
 			redirect_to root_path
 		else
 			render 'edit'
@@ -95,6 +104,6 @@ class IndicatorsController < ApplicationController
 
 	private
 		def indicator_params
-			params.require(:indicator).permit(:name, :data, :graph, :xaxis, :yaxis)
+			params.require(:indicator).permit(:name, :data, :graph, :xaxis, :yaxis,:category_id)
 		end
 end

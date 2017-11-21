@@ -15,6 +15,10 @@
 								</div>
 							<% end %>
 							<p>
+								<%= f.label :category %>
+								<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Choose a category"}, { :class => 'form-control' } %>
+							</p>
+							<p>
 								<%= f.label :graph %><br>
 								<%= f.select(:graph, ['column','bar','line','area','stacked_column','stacked_bar','stacked_area'], {}, { :class => 'form-control' }) %>
 							</p>

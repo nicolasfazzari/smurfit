@@ -1,5 +1,18 @@
 <section class="main-content-wrapper">
 	<section id="main-content">
+		 <div class="row">
+		 	<div class="col-md-12">
+		 		<%= link_to "All", indicators_path(category: ""), :class => "btn btn-primary" %>
+			 	<% Category.all.each do |category| %>
+			 		<%= link_to category.name, indicators_path(category: category.name), :class => "btn btn-primary" %>
+			 	<% end %>
+			 	<br>	<br>
+		 	</div>
+		 </div>
+
+
+
+
 								    <div class="row">
 										<% @kpis.each.with_index do |kpi, index| %>
 											<div class="col-md-3 col-sm-6">
