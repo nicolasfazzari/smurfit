@@ -16,9 +16,9 @@
                 </ul>
               </div>
               <% end %>
-              <p>
-                  <%= f.label :process %><br>
-                  <%= f.select(:process, ['RH','Production','Achat','Qualité','Finance','Maintenance','Vente'], {}, { :class => 'form-control' }) %>
+             <p>
+                <%= f.label :category %>
+                <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Choose a category"}, { :class => 'form-control' } %>
               </p>
                <p>
                   <%= f.label :doc %><br>

@@ -7,15 +7,19 @@
     <%= form_for([@todo_list, @todo_item]) do |f| %>
 
  	<div  class="row">
-	 	<div class="col-sm-4">
+	 	<div class="col-sm-3">
 	 		<%= f.label :content%><br>
 			<%= f.text_field :content, placeholder: "new Todo", :class=>"form-control" %>
 		</div>
-		<div id="sandbox-container" class="col-sm-4">
+		<div class="col-sm-3">
+			<%= f.label :priority %><br>
+			<%= f.select :priority, options_for_select(["Low", "Medium", "High"]), {}, :class=>"form-control" %>
+		</div>
+		<div id="sandbox-container" class="col-sm-3">
 			<%= f.label :deadline %><br>
 			<%= f.text_field :deadline, placeholder: "deadline", data:{ provide:'datepicker'}, :class=>"form-control" %>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-3">
 			<%= f.label :tag_list%><br>
 			<%= f.text_field :tag_list,placeholder: "Tags seperated by commas", :class=>"form-control" %>
 		</div>

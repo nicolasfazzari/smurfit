@@ -1,16 +1,19 @@
 
 <%= form_for([@todo_list, @todo_list.todo_items.build]) do |f| %>
  	<div  class="row">
-	 	<div class="col-sm-3">
+	 	<div class="col-sm-2">
 			<%= f.text_field :content, placeholder: "new Todo", :class=>"form-control" %>
 		</div>
-		<div id="sandbox-container" class="col-sm-3">
+		<div class="col-sm-2">
+			<%= f.select :priority, options_for_select(["Low", "Medium", "High"]), {}, :class=>"form-control" %>
+		</div>
+		<div id="sandbox-container" class="col-sm-2">
 			<%= f.text_field :deadline, placeholder: "deadline", data:{ provide:'datepicker', date:{format:"dd/mm/yyyy"}}, :class=>"form-control" %>
 		</div>
-		<div class="col-sm-3">
-			<%= f.text_field :tag_list, placeholder: "new Todo", :class=>"form-control" %>
+		<div class="col-sm-2">
+			<%= f.text_field :tag_list, placeholder: "Tags seperated by commas", :class=>"form-control" %>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-sm-2">
 			<%= f.submit :class=>"btn btn-primary btn-block" %></span>
 		</div>
 	</div>

@@ -4,7 +4,13 @@ class DocumentationsController < ApplicationController
   # GET /documentations
   # GET /documentations.json
   def index
-    @documentations = Documentation.all
+
+    if params[:category].blank?
+     @documentations = Documentation.all.order('created_at DESC')
+    else
+      @category_id=Category.find_by(name: params[:category]).id
+      @documentations = Documentation.where(category_id: @category_id).order('created_at DESC')
+    end
 
     respond_to do |format|
       format.html
@@ -54,7 +60,7 @@ class DocumentationsController < ApplicationController
   def update
     @documentations = Documentation.find(params[:id])
 
-    if @documentations.update(params[:documentation].permit(:format, :title, :version, :file, :process, :doc))
+    if @documentations.update(params[:documentation].permit(:format, :title, :version, :file, :process, :doc, :category_id))
       redirect_to documentations_path
     else
       render 'edit'
@@ -85,6 +91,6 @@ class DocumentationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def documentation_params
-      params.require(:documentation).permit(:format, :title, :version, :file, :process, :doc)
+      params.require(:documentation).permit(:format, :title, :version, :file, :process, :doc, :category_id)
     end
 end
