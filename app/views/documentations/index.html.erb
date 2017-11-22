@@ -46,7 +46,7 @@
                                 <tbody>
                                     <% @documentations.each do |documentation| %>
                                     <tr>
-                                      <td><%= documentation.process %></td>
+                                      <td><%= documentation.category %></td>
                                       <td><%= documentation.doc %></td>
                                       <td><%= documentation.title %></td>
                                       <td><%= File.extname(documentation.file.url).strip.downcase[1..-1].partition("?").first%></td>
