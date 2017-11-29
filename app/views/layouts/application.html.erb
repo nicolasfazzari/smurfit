@@ -55,22 +55,28 @@
             <h5 class="sidebar-header">Navigation</h5>
             <ul class="nav nav-pills nav-stacked">
                <li class="<%= current_controller?('indicators') ? 'active' : '' %>">
-                    <%= link_to root_path do %><i class="fa fa-bar-chart"></i> indicateurs<% end %>
+                    <%= link_to root_path do %><i class="fa fa-bar-chart"></i> Indicateurs<% end %>
                 </li>
                 <li class="<%= current_controller?('documentations') ? 'active' : '' %>">
-                    <%= link_to documentations_path do %><i class="fa fa-book"></i> documentation<% end %>
+                    <%= link_to documentations_path do %><i class="fa fa-book"></i> Documentation<% end %>
                 </li>
                 <li class="<%= current_controller?('todo_lists') ? 'active' : '' %>">
-                    <%= link_to todo_lists_path do %><i class="fa fa-tasks"></i> task management<% end %>
+                    <%= link_to todo_lists_path do %><i class="fa fa-tasks"></i> Task management<% end %>
                 </li>
             </ul>
         </nav>
         <!--sidebar left end-->
+        <%
+=begin 
+%>
         <% flash.each do |name, msg| %>
          <div class="flash text-center">
             <%= content_tag(:div, msg, class: "alert alert-success") %>
           </div>
         <% end %>
+        <%
+=end
+%>
 
 <% end %>
 		<%= yield %>

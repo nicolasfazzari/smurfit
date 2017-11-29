@@ -1,7 +1,7 @@
 <section class="main-content-wrapper">
 	<section id="main-content">
 		 <div class="row">
-		 	<div class="col-md-12">
+		 	<div class="col-md-10">
 		 		<span style="color: #9eafba;text-decoration: none;font-size: 1.5em;"><i class="fa fa-tag fa-1x"> Filter :</i></span>
 		 		<%= link_to "All", indicators_path, :class => "btn btn-primary" %>
 			 	<% Category.all.each do |category| %>
@@ -9,8 +9,16 @@
 			 	<% end %>
 			 	<br>	<br>
 		 	</div>
+		 	<div class="col-md-2">
+		 		<div class="pull-right">
+			 		 <% if current_user.admin? %>
+				 		<%= link_to new_indicator_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  do %><i class="fa fa-bar-chart"></i> Add indicator<% end %>  |  
+					 	<%= link_to new_kpi_path, {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-kpi'}  do %><i class="fa fa-dashboard"></i> Add kpi<% end %>
+				 	<br>	<br>
+				 	<% end %>
+				</div>
+		 	</div>
 		 </div>
-
 
 
 
