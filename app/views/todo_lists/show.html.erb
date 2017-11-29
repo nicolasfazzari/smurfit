@@ -11,18 +11,7 @@
                         </ul>
                     </div>
                 </div>
-         <div class="row">
-          <div class="col-md-12">
-              <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Create a task</h3>
-                    </div>
-                    <div class="panel-body">
-                            <%= render "todo_items/form" %>
-                    </div>
-                  </div>
-           </div>
-        </div>
+       
         <div class="row">
           <div class="col-md-12">
               <span style="color: #9eafba;text-decoration: none;font-size: 1.5em;"><i class="fa fa-tag fa-1x"> Filter :</i></span>
@@ -44,6 +33,12 @@
         <div class="row">
           <div class="col-md-12">
               <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">ALL ACTION PLANS</h3>
+                          <div class="actions pull-right">
+                                   <%= link_to 'Create a new task',new_todo_list_todo_item_path(@todo_list),{:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-new',:class => "btn btn-primary btn-xs"}  %>
+                          </div>
+                    </div>
                     
                     <div class="panel-body">
                        <table id="tasks" class="table table-hover" cellspacing="0" width="100%">
@@ -52,8 +47,8 @@
                             <th>Complete</th>
                             <th>Priority</th>
                             <th>Title</th>
+                            <th>In charge</th>
                             <th>Deadline</th>
-                            <th>Tags</th>
                             <th>Edit</th>
                             <th>Delete</th>
                           </tr>
@@ -67,16 +62,16 @@
                                               <td width="5%" style="vertical-align: middle;text-align:center"><%= link_to incomplete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %><i class="fa fa-check-square-o fa-lg" style="opacity:0.4;"> </i><% end %></td>
                                               
                                               <% if todo_item.priority=="High" %>
-                                                <td style="vertical-align: middle;opacity:0.4;" width="5%"><button type="button" class="btn btn-danger btn-xs"><strike><%= todo_item.priority %></strike></button></td>
+                                                <td style="vertical-align: middle;opacity:0.4;" ><button type="button" class="btn btn-danger btn-xs"><strike><%= todo_item.priority %></strike></button></td>
                                               <% elsif todo_item.priority=="Medium"  %>
-                                                <td style="vertical-align: middle;opacity:0.4;" width="5%"><button type="button" class="btn btn-warning btn-xs"><strike><%= todo_item.priority %></strike></button></td>
+                                                <td style="vertical-align: middle;opacity:0.4;" ><button type="button" class="btn btn-warning btn-xs"><strike><%= todo_item.priority %></strike></button></td>
                                               <% else %>
-                                                <td style="vertical-align: middle;opacity:0.4;" width="5%"><button type="button" class="btn btn-primary btn-xs"><strike><%= todo_item.priority %></strike></button></td>
+                                                <td style="vertical-align: middle;opacity:0.4;" ><button type="button" class="btn btn-primary btn-xs"><strike><%= todo_item.priority %></strike></button></td>
                                               <% end %>
 
                                               <td style="vertical-align: middle;opacity:0.4;"><strike><%= todo_item.content %></strike></td> 
-                                              <td width="10%" style="vertical-align: middle;opacity:0.4; text-decoration:line-through;"><%= todo_item.deadline %></td> 
-                                              <td width="30%" style="vertical-align: middle;opacity:0.4;" ><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></td>
+                                              <td style="vertical-align: middle;opacity:0.4;" ><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></td>
+                                               <td style="vertical-align: middle;opacity:0.4; text-decoration:line-through;"><%= todo_item.deadline %></td> 
                                               <td width="5%" style="vertical-align: middle;text-align:center;opacity:0.4;"><%= link_to edit_todo_list_todo_item_path(@todo_list, todo_item.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit'} do %><i class="fa fa-edit fa-lg" style="opacity:0.4;"> </i><% end%></td>
                                               <td width="5%" style="vertical-align: middle;text-align:center;opacity:0.4;"><%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?'} do %><i class="fa fa-trash fa-lg" style="opacity:0.4;"> </i><% end%></td>
                                       
@@ -86,16 +81,17 @@
                                               <td width="5%" style="vertical-align: middle;text-align:center"><%= link_to complete_todo_list_todo_item_path(@todo_list, todo_item.id), method: :patch do %><i class="fa fa-square-o fa-lg"> </i><% end %></td>
                                               
                                               <% if todo_item.priority=="High" %>
-                                                <td style="vertical-align: middle;" width="5%"><button type="button" class="btn btn-danger btn-xs"><%= todo_item.priority %></button></td>
+                                                <td style="vertical-align: middle;" ><button type="button" class="btn btn-danger btn-xs"><%= todo_item.priority %></button></td>
                                               <% elsif todo_item.priority=="Medium"  %>
-                                                <td style="vertical-align: middle;" width="5%"><button type="button" class="btn btn-warning btn-xs"><%= todo_item.priority %></button></td>
+                                                <td style="vertical-align: middle;" ><button type="button" class="btn btn-warning btn-xs"><%= todo_item.priority %></button></td>
                                               <% else %>
-                                                <td style="vertical-align: middle;" width="5%"><button type="button" class="btn btn-primary btn-xs"><%= todo_item.priority %></button></td>
+                                                <td style="vertical-align: middle;" ><button type="button" class="btn btn-primary btn-xs"><%= todo_item.priority %></button></td>
                                               <% end %>
 
                                               <td style="vertical-align: middle;"><%= todo_item.content %></td> 
-                                              <td width="10%" style="vertical-align: middle;"><%= todo_item.deadline %></td> 
-                                              <td width="30%" style="vertical-align: middle;" ><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></td>
+                                              
+                                              <td style="vertical-align: middle;" ><%= raw todo_item.tag_list.map{|t| link_to t, tag_path(@todo_list, t), :class =>"btn btn-primary btn-xs"}.join(' ')%></td>
+                                              <td  style="vertical-align: middle;"><%= todo_item.deadline %></td> 
                                               <td width="5%" style="vertical-align: middle;text-align:center"><%= link_to edit_todo_list_todo_item_path(@todo_list, todo_item.id), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-edit'} do %><i class="fa fa-edit fa-lg" style="opacity:0.4;"> </i><% end%></td>
                                               <td width="5%" style="vertical-align: middle;text-align:center"><%= link_to todo_list_todo_item_path(@todo_list, todo_item.id), method: :delete, data: { confirm: 'Are you sure?'} do %><i class="fa fa-trash fa-lg" style="opacity:0.4;"> </i><% end%></td>
 
@@ -114,6 +110,14 @@
 </section>
 
 <div id="modal-edit" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+        </div>
+      </div>
+</div>
+
+<div id="modal-new" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
 
