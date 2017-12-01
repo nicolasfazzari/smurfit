@@ -10,8 +10,12 @@ class TodoListsController < ApplicationController
   def show
     if params[:tag]
       @todo_item = @todo_list.todo_items.tagged_with(params[:tag])
+   # elsif params[:view] == "Assess"
+    #  @todo_item = @todo_list.todo_items.where.not(completed_at: nil).where(efficiency: nil)
+    elsif params[:view] == "History"
+      @todo_item = @todo_list.todo_items.where.not(efficiency: nil)
     else
-      @todo_item = @todo_list.todo_items.all
+      @todo_item = @todo_list.todo_items.where(efficiency: nil)
     end
     
   end

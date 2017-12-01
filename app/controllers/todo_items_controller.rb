@@ -54,6 +54,11 @@ class TodoItemsController < ApplicationController
 		redirect_to :back
 	end
 
+	def efficiency
+		@todo_item.update_attribute(:efficiency, params[:efficiency])
+		redirect_to :back
+	end
+
 	private
 
 	def set_todo_list
