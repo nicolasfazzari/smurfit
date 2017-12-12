@@ -61,7 +61,7 @@ class IndicatorsController < ApplicationController
 		if @indicator.save
 			redirect_to root_path
 		else
-			render 'new'
+			redirect_to root_path
 		end
 	end
 
@@ -85,7 +85,7 @@ class IndicatorsController < ApplicationController
 		if @indicator.update(params[:indicator].permit(:name, :data, :graph, :xaxis, :yaxis, :category_id))
 			redirect_to root_path
 		else
-			render 'edit'
+			redirect_to root_path
 		end
 	end
 	
