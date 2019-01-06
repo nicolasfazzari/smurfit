@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         end
     end
   end
+  resources :documentations
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :kpis
   devise_for :users
